@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta charset="UTF-8">
+  
+<%= favicon_link_tag 'favicon.ico' %>
+  
+<!-- Latest compiled and minified CSS -->
+<%= stylesheet_link_tag "/assets/bootstrap.min.css" %>
+<!-- Hippicons (local) -->
+<%= stylesheet_link_tag "/assets/hippicons-min.css" %>
+<!-- jQuery UI CSS (local) -->
+<%= stylesheet_link_tag "/assets/jquery-ui.min.css" %>
+<!-- jQuery (local) -->
+<%= javascript_include_tag "/assets/jquery-2.2.4.min.js" %>
+<!-- jQuery UI (local) -->
+<%= javascript_include_tag "/assets/jquery-ui.min.js" %>
+<!-- Rails JS (local) -->
+<%= javascript_include_tag "/assets/rails.min.js" %>
+<!-- Bootstrap JS (local) -->
+<%= javascript_include_tag "/assets/bootstrap.min.js" %>
+
+<!-- thisApp exclusivo -->
+<%= javascript_include_tag "/assets/underscore-min.js" %>
+<!-- thisApp exclusivo -->
+<%= javascript_include_tag "/assets/gmaps_google.js" %>
+
+<!-- data confirm modal -->
+<script src="/assets/data-confirm-modal.js"></script>
+<!-- opciones integradas en data-confirm-modal.js -->
+
+  <title>Geotest</title>
+  
+  <%= stylesheet_link_tag    'default', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'default', 'data-turbolinks-track' => true %>
+  
+<script>
+	$(window).load(function(){$('#cover').fadeOut(1000);});
+</script>
+  
+  
+  <%= csrf_meta_tags %>
+  
+  <div id="cover" style="z-index:9999;"></div>
+  
+</head>
+
+<body>
+	
+		<div class="container">
+		  <%= render partial: "shared/flashmessages", flash: flash %>
+		  <%= yield %>
+		</div>
+
+</body>
+
+<footer class="footer">
+<%= yield :scripts %>	
+	<small><span class="badge center center-block""><%= request.user_agent %> (<%= request.ip %>)(<%= request.server_software %>)</span></small>
+	<small><span class="badge center center-block""><%= request.referer %></span></small>
+</footer>
+
+</html>

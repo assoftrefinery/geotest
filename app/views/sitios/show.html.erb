@@ -1,0 +1,70 @@
+<p class="well well-sm">
+  <strong>Titulo:</strong>
+  <%= @sitio.titulo %>
+</p>
+
+<p class="well well-sm">
+  <strong>Direccion:</strong>
+  <%= @sitio.direccion %>
+</p>
+
+<p class="well well-sm">
+  <strong>Notas:</strong>
+  <%= @sitio.notas %>
+</p>
+
+<p class="well well-sm">
+  <strong>Latitud:</strong>
+  <%= @sitio.latitude %>
+</p>
+
+<p class="well well-sm">
+  <strong>Longitud:</strong>
+  <%= @sitio.longitude %>
+</p>
+
+<p class="well well-sm">
+  <strong>Código Postal:</strong>
+  <%= @sitio.postal_code %>
+</p>
+
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@sitio.latitude}%2C#{@sitio.longitude}", :class=>'center center-block well img img-responsive' %>
+
+<div class="well">
+	<h4>Sitios Cercanos</h4>
+	<ul class="hi-ul icons-large">
+	 <% @sitio.nearbys(1000, :units => :km).each do |sitio| %>
+	 	<li><i class="hi-li hi hi-map-marker"></i><%= link_to sitio.titulo, sitio %> (<%= sitio.distance.round(2) %> kilómetros)<span class="badge badge-important"><%= sitio.postal_code %></span></li>
+	 <% end %>
+	</ul>
+</div>
+
+<div class="well">
+	<h4>Puntos de Interés</h4>
+	<ul class="hi-ul icons-large">
+	
+	 <% Geocoder.search([@sitio.latitude, @sitio.longitude]).each do |sitio| %>
+	 	<li>
+	 		<ul>
+
+	 			<li> <%= sitio.address_components %></li>
+	 			<li>- Tipo            	: <%= sitio.types %></li> 
+	 		 	<li>- Datos completos 	: <%= sitio.formatted_address %></li>
+	 		 	<li>- Vecindario        : <%= sitio.neighborhood %></li>
+	 		 	<li>- Ciudad            : <%= sitio.city %></li>
+	 		 	<li>- Codigo Postal     : <%= sitio.postal_code %></li>
+	 		 	<br>
+	 		</ul>
+	 	</li>
+	 <% end %>
+	</ul>
+</div>
+
+<br>
+
+<%= link_to '', edit_sitio_path(@sitio), :class =>  "btn btn-primary btn-block hi hi-pencil", :style => 'border-radius:5px;' %>
+
+<%= link_to '', sitios_path, :class =>  "btn btn-primary btn-block hi hi-chevron-left", :style => 'border-radius:5px;' %>
+
+<br>
