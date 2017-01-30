@@ -1,28 +1,40 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+GEOTEST
+	Ruby on Rails, Geocoder gem, gmaps4rails
+	
+	21 Enero 2017
+	
+	-Geolocalizacion con Geocoder -> Entrar direccion, pe: ciudad, empresa, etc
+		Devuelve lat, long, Codigo postal
+	-Google Maps
+		Usa las coords obtenidadas por Geocoder y pinta un mapa 
+	-Overlays
+		WMS Catastro
+		WMS Sigpac
+		
+	-Futuro:
+		Detectar poligono (path)
+		Ligar BD socios con sus parcelas
+		Dominar el mundo
 
 * Ruby version
-
+	... ruby 2.0.0p598 (2014-11-13) [i386-mingw32]
 * System dependencies
-
+	...
 * Configuration
-
+	...
 * Database creation
-
+	...
 * Database initialization
-
+	...
 * How to run the test suite
-
+	...
 * Services (job queues, cache servers, search engines, etc.)
-
+	...
 * Deployment instructions
 
 * ...
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
